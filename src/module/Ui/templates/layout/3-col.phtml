@@ -21,9 +21,16 @@ echo $this->doctype();
     <div id="page" class="container clearfix<?php echo (!empty($this->registry()->get('rnav')) ? ' has-sidebar' : '') ?>">
         <?php echo $this->partial('layout/partials/left-sidebar'); ?>
         <section class="main clearfix">
-            <div id="content-layout" class="content clearfix">
+            <!-- Added this style to align it on the footer -->
+            <div id="content-layout" style="position:relative;" class="content clearfix">
                 <?php echo $this->partial('layout/partials/notifications'); ?>
                 <?php echo $this->partial('layout/partials/main'); ?>
+                <!-- move this to the bottom of the page -->
+                <div style="border: red 1px solid; position:absolute;bottom:0;">
+                    <span style="float:left;">Text about the question (-.-)...</span>
+                    <div class="feedback-action" style="float:right;" data-user="{{ user().getAuthenticatedUserID() }}" data-object="{{ entity.getId() }}"></div>
+                </div>
+                <!-- move this to the bottom of the page END -->
             </div>
             <?php echo $this->partial('layout/partials/right-sidebar'); ?>
             <?php echo $this->horizon(3); ?>
